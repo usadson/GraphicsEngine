@@ -6,8 +6,8 @@
 include Settings.Makefile
 
 # All the object files. By convention, each .cpp should have a corresponding
-# object file. For more information, see the explanation above.
-BINARIES =
+# object file.
+BINARIES = bin/engine.o
 
 # The 'all' target will compile all object files and generate the binary
 # executable. This is the default target for 'make'.
@@ -25,8 +25,13 @@ clean:
 
 # The 'engine' target will build the final binary executable.
 engine: main.cpp \
+	engine.hpp \
 	$(BINARIES)
 	$(CXX) $(CXXFLAGS) -o $@ main.cpp $(BINARIES) $(LDFLAGS)
+
+bin/engine.o: engine.hpp \
+	engine.cpp
+	$(CXX) $(CXXFLAGS) -c -o $@ engine.cpp
 
 # The 'bin/.directory' will ensure all directories required by the object files
 # are present. The bin/.directory file will be touch'ed so that mkdir will only
@@ -38,6 +43,7 @@ engine: main.cpp \
 bin/.directory:
 	@mkdir bin
 	@touch bin/.directory
+
 
 # the 'memory' target will invoke Valgrind, which will run the executable and
 # can track memory usage. Memory leaks, double free()'s, use-after-free,
