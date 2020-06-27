@@ -1,6 +1,6 @@
 bin/
-server
+engine
 infer-out/
-*.log
+*.tmp
 .kateproject
 kate.project.ctags.*
