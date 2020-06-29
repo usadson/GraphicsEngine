@@ -8,7 +8,7 @@
 class GraphicsCoreBase {
 public:
     virtual
-    ~GraphicsCoreBase() = default;
+    ~GraphicsCoreBase() noexcept = default;
 
     [[nodiscard]] virtual bool
     CheckSupport() = 0;
