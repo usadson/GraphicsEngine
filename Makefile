@@ -7,7 +7,8 @@ include Settings.Makefile
 
 # All the object files. By convention, each .cpp should have a corresponding
 # object file.
-BINARIES = bin/engine.o
+BINARIES = bin/engine.o \
+	   bin/graphics/vulkan/core.o
 
 # The 'all' target will compile all object files and generate the binary
 # executable. This is the default target for 'make'.
@@ -33,6 +34,11 @@ bin/engine.o: engine.hpp \
 	engine.cpp
 	$(CXX) $(CXXFLAGS) -c -o $@ engine.cpp
 
+bin/graphics/vulkan/core.o: graphics/vulkan/core.cpp \
+	graphics/vulkan/core.hpp \
+	graphics/base.hpp
+	$(CXX) $(CXXFLAGS) -c -o $@ graphics/vulkan/core.cpp
+
 # The 'bin/.directory' will ensure all directories required by the object files
 # are present. The bin/.directory file will be touch'ed so that mkdir will only
 # be called once.
@@ -42,6 +48,8 @@ bin/engine.o: engine.hpp \
 # execute the 'clean' target.
 bin/.directory:
 	@mkdir bin
+	@mkdir bin/graphics
+	@mkdir bin/graphics/vulkan
 	@touch bin/.directory
 
 
