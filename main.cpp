@@ -14,8 +14,8 @@ int
 main() {
     EngineCore engine;
 
-    std::cout << "Running " << ApplicationInfo::applicationName << " v" << ApplicationInfo::applicationVersion << '\n';
-    std::cout << "Using " << ApplicationInfo::engineName << " v" << ApplicationInfo::engineVersion << '\n';
+    std::cout << "Running " << ApplicationInfo::name << " v" << ApplicationInfo::version << '\n';
+    std::cout << "Using " << EngineInfo::name << " v" << EngineInfo::version << '\n';
 
     if (!engine.Setup()) {
         std::cerr << "Main: Setup failed!\n";
