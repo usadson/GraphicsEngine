@@ -11,11 +11,16 @@
 
 class EngineCore {
 public:
-    [[nodiscard]] bool
-    Setup() noexcept;
+    ~EngineCore() noexcept;
+
+    void
+    Clean() noexcept;
 
     [[nodiscard]] bool
     Run() noexcept;
+
+    [[nodiscard]] bool
+    Setup() noexcept;
 
     void
     Shutdown() noexcept;

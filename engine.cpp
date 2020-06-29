@@ -9,6 +9,32 @@
 
 #include "graphics/vulkan/core.hpp"
 
+EngineCore::~EngineCore() noexcept {
+    Clean();
+}
+
+void
+EngineCore::Clean() noexcept {
+    glfwTerminate();
+}
+
+bool
+EngineCore::FindGraphicsCore() noexcept {
+    this->graphicsCore = std::make_unique<VulkanCore>();
+    if (this->graphicsCore->CheckSupport()) {
+        return true;
+    }
+
+    // Check for other candidates (GL, DX, etc.)
+
+    return false;
+}
+
+bool
+EngineCore::Run() noexcept {
+    return true;
+}
+
 bool
 EngineCore::Setup() noexcept {
     if (!FindGraphicsCore()) {
@@ -24,24 +50,7 @@ EngineCore::Setup() noexcept {
     return true;
 }
 
-bool
-EngineCore::Run() noexcept {
-    return true;
-}
-
 void
 EngineCore::Shutdown() noexcept {
 
-}
-
-bool
-EngineCore::FindGraphicsCore() noexcept {
-    this->graphicsCore = std::make_unique<VulkanCore>();
-    if (this->graphicsCore->CheckSupport()) {
-        return true;
-    }
-
-    // Check for other candidates (GL, DX, etc.)
-
-    return false;
 }
