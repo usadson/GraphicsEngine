@@ -9,15 +9,6 @@
 
 #include "graphics/vulkan/core.hpp"
 
-EngineCore::~EngineCore() noexcept {
-    Clean();
-}
-
-void
-EngineCore::Clean() noexcept {
-    glfwTerminate();
-}
-
 bool
 EngineCore::FindGraphicsCore() noexcept {
     this->graphicsCore = std::make_unique<VulkanCore>();

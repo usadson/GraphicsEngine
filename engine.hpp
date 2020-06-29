@@ -11,10 +11,6 @@
 
 class EngineCore {
 public:
-    ~EngineCore() noexcept;
-
-    void
-    Clean() noexcept;
 
     [[nodiscard]] bool
     Run() noexcept;
