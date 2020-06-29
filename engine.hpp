@@ -5,6 +5,10 @@
 
 #pragma once
 
+#include <memory>
+
+#include "graphics/base.hpp"
+
 class EngineCore {
 public:
     [[nodiscard]] bool
@@ -15,4 +19,10 @@ public:
 
     void
     Shutdown() noexcept;
+
+private:
+    std::unique_ptr<GraphicsCoreBase> graphicsCore;
+
+    [[nodiscard]] bool
+    FindGraphicsCore() noexcept;
 };
