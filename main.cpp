@@ -7,11 +7,15 @@
 
 #include <cstdlib>
 
+#include "base/application_info.hpp"
 #include "engine.hpp"
 
 int
 main() {
     EngineCore engine;
+
+    std::cout << "Running " << ApplicationInfo::applicationName << " v" << ApplicationInfo::applicationVersion << '\n';
+    std::cout << "Using " << ApplicationInfo::engineName << " v" << ApplicationInfo::engineVersion << '\n';
 
     if (!engine.Setup()) {
         std::cerr << "Main: Setup failed!\n";
