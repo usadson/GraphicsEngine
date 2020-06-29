@@ -18,4 +18,9 @@ public:
     [[nodiscard]] virtual bool
     Setup() override;
 
+private:
+    VkInstance instance;
+
+    [[nodiscard]] bool
+    CreateInstance() noexcept;
 };
