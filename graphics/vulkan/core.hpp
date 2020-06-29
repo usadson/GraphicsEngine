@@ -12,14 +12,20 @@
 
 class VulkanCore : public GraphicsCoreBase {
 public:
+    ~VulkanCore() noexcept;
+
     [[nodiscard]] bool
-    CheckSupport() override;
+    CheckSupport() noexcept override;
 
     [[nodiscard]] virtual bool
-    Setup() override;
+    Setup() noexcept override;
 
 private:
+    VkAllocationCallbacks *allocationCallbacks;
     VkInstance instance;
+
+    void
+    Clean() noexcept;
 
     [[nodiscard]] bool
     CreateInstance() noexcept;
