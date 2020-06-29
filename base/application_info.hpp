@@ -8,11 +8,12 @@
 #include "version.hpp"
 
 namespace ApplicationInfo {
-
-    static const char *applicationName = "AppName";
-    static constexpr Version applicationVersion{ 0, 1, 0 };
-
-    static const char *engineName = "EngineName";
-    static constexpr Version engineVersion{ 0, 1, 0 };
-
+static const char *name = "AppName";
+static constexpr Version version{ 0, 1, 0 };
 } // namespace ApplicationInfo
+
+namespace EngineInfo {
+static const char *name = "EngineName";
+static constexpr Version version{ 0, 1, 0 };
+}
+
