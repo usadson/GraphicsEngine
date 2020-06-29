@@ -14,4 +14,4 @@ WARNINGS = \
 ADDITIONAL_CXXFLAGS ?=
 CXXFLAGS += $(GENERAL) $(INCLUDES) $(WARNINGS) $(FLAGS) $(ADDITIONAL_CXXFLAGS)
 CXX = clang++
-LDFLAGS = `pkg-config --static --libs vulkan`
+LDFLAGS = `pkg-config --static --libs glfw3 vulkan`
