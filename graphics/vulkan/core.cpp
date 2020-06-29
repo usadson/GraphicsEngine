@@ -5,8 +5,15 @@
 
 #include "core.hpp"
 
+#include "base/application_info.hpp"
+
+
+VulkanCore::~VulkanCore() noexcept {
+    Clean();
+}
+
 bool
-VulkanCore::CheckSupport() {
+VulkanCore::CheckSupport() noexcept {
     if (!glfwInit()) {
         return false;
     }
@@ -20,7 +27,34 @@ VulkanCore::CheckSupport() {
     return true;
 }
 
+void
+VulkanCore::Clean() noexcept {
+    vkDestroyInstance(instance, allocationCallbacks);
+    glfwTerminate();
+}
+
 bool
-VulkanCore::Setup() {
+VulkanCore::CreateInstance() noexcept {
+    VkApplicationInfo appInfo{};
+    appInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
+    appInfo.pApplicationName = ApplicationInfo::name;
+    appInfo.applicationVersion = ApplicationInfo::version.vkVersion();
+    appInfo.pEngineName = EngineInfo::name;
+    appInfo.engineVersion = EngineInfo::version.vkVersion();
+    appInfo.apiVersion = VK_API_VERSION_1_0;
+
+    VkInstanceCreateInfo createInfo{};
+    createInfo.sType = VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO;
+    createInfo.pApplicationInfo = &appInfo;
+
+    return vkCreateInstance(&createInfo, allocationCallbacks, &instance) == VK_SUCCESS;
+}
+
+bool
+VulkanCore::Setup() noexcept {
+    if (!CreateInstance()) {
+        return false;
+    }
+
     return true;
 }
