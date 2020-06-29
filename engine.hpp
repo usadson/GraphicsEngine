@@ -7,12 +7,12 @@
 
 class EngineCore {
 public:
-	[[nodiscard]] bool
-	Setup() noexcept;
+    [[nodiscard]] bool
+    Setup() noexcept;
 
-	[[nodiscard]] bool
-	Run() noexcept;
+    [[nodiscard]] bool
+    Run() noexcept;
 
-	void
-	Shutdown() noexcept;
+    void
+    Shutdown() noexcept;
 };

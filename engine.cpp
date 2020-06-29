@@ -7,12 +7,12 @@
 
 bool
 EngineCore::Setup() noexcept {
-	return true;
+    return true;
 }
 
 bool
 EngineCore::Run() noexcept {
-	return true;
+    return true;
 }
 
 void

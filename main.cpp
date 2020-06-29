@@ -11,15 +11,15 @@
 
 int
 main() {
-	EngineCore engine;
+    EngineCore engine;
 
-	if (!engine.Setup()) {
-		std::cerr << "Main: Setup failed!\n";
-		return EXIT_FAILURE;
-	}
+    if (!engine.Setup()) {
+        std::cerr << "Main: Setup failed!\n";
+        return EXIT_FAILURE;
+    }
 
-	bool status = engine.Run();
-	engine.Shutdown();
+    bool status = engine.Run();
+    engine.Shutdown();
 
-	return status ? EXIT_SUCCESS : EXIT_FAILURE;
+    return status ? EXIT_SUCCESS : EXIT_FAILURE;
 }
